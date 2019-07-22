@@ -22,7 +22,7 @@ func Dispatcher(ip string, data []byte) ([]byte, error) {
     req, err := http.NewRequest("POST", fmt.Sprintf("http://%v/exec", ip), strings.NewReader(string(data)))
     if err != nil {
         seelog.Errorf("ERROR : %v", err.Error())
-        return nil,err
+        return nil, err
     }
 
     header := map[string][]string{}
@@ -31,14 +31,14 @@ func Dispatcher(ip string, data []byte) ([]byte, error) {
     res, err := Client.Do(req)
     if err != nil {
         seelog.Errorf("ERROR : %v", err.Error())
-        return nil,err
+        return nil, err
     }
     defer res.Body.Close()
 
     body, err := ioutil.ReadAll(res.Body)
     if err != nil {
         seelog.Errorf("ERROR : %v", err.Error())
-        return nil,err
+        return nil, err
     }
 
     seelog.Trace(string(body))
