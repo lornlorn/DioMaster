@@ -19,10 +19,7 @@ func StartHTTP(httpPort int, writeTimeout int, readTimeout int) error {
     seelog.Info("Initialize HTTP Routers Success !")
 
     svr := &http.Server{
-        Handler: r,
-        // Addr:         ":5678",
-        // WriteTimeout: 600 * time.Second,
-        // ReadTimeout:  10 * time.Second,
+        Handler:      r,
         Addr:         fmt.Sprintf(":%v", httpPort),
         WriteTimeout: time.Duration(writeTimeout) * time.Second,
         ReadTimeout:  time.Duration(readTimeout) * time.Second,
